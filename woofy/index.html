@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Woofy – The Slowest Delivery</title>
-  <meta name="description" content="Woofy guarantees the slowest delivery in the U.S. – patience is a virtue!" />
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Woofy – The slowest delivery in the U.S. Patience is a virtue!">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -29,15 +29,23 @@
     <h2>How It Works</h2>
     <ol>
       <li>Place your order and forget about it.</li>
-      <li>Woofy will slowly pick up your package.</li>
+      <li>Woofy slowly picks up your package.</li>
       <li>Track your package… if you can wait long enough.</li>
       <li>Receive your package in record-breaking slow time.</li>
     </ol>
   </section>
 
   <section id="tracking">
-    <h2>Tracking</h2>
-    <div class="tracker"><div class="dog">🐶</div></div>
+    <h2>Track Your Package</h2>
+    <p>Enter your tracking number to see Woofy’s progress:</p>
+    <div class="tracking-form">
+      <input type="text" id="tracking-number" placeholder="Enter tracking number">
+      <button onclick="trackPackage()">Track</button>
+    </div>
+    <div class="tracker">
+      <div class="dog">🐶</div>
+    </div>
+    <p id="tracking-status"></p>
   </section>
 
   <section id="pricing">
@@ -51,8 +59,8 @@
   <section id="contact">
     <h2>Contact</h2>
     <form onsubmit="alert('Thanks! We’ll get back… eventually.'); return false;">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Email" required />
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email" required>
       <textarea placeholder="Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
