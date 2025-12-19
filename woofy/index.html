@@ -1,75 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Woofy – The Slowest Delivery</title>
-  <meta name="description" content="Woofy – The slowest delivery in the U.S. Patience is a virtue!">
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woofy Express - The Slowest Delivery in the US</title>
+    <!-- Bootstrap CSS for advanced, responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1920x600?text=Woofy+Express+Hero+Image') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 150px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        .slow-animation {
+            animation: slow-move 10s linear infinite;
+        }
+        @keyframes slow-move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">🐶 Woofy</div>
-    <nav>
-      <a href="#how">How It Works</a>
-      <a href="#tracking">Tracking</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Woofy Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Need it… maybe tomorrow? Or next week?</h1>
-    <p>Woofy guarantees the slowest delivery in the U.S. – patience is a virtue.</p>
-    <button onclick="alert('Thanks for trusting Woofy! He’ll get there… eventually!')">Send it… eventually</button>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Woofy Express</h1>
+            <p>The Slowest Delivery Service in the US – Because Good Things Come to Those Who Wait... A Lot!</p>
+            <button class="btn btn-light btn-lg mt-3 slow-animation">Get Started (Slowly)</button>
+        </div>
+    </section>
 
-  <section id="how">
-    <h2>How It Works</h2>
-    <ol>
-      <li>Place your order and forget about it.</li>
-      <li>Woofy slowly picks up your package.</li>
-      <li>Track your package… if you can wait long enough.</li>
-      <li>Receive your package in record-breaking slow time.</li>
-    </ol>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/600x400?text=Lazy+Dog+Image" alt="Lazy Dog" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <p>Woofy Express is proud to be the slowest delivery service in the United States. Our fleet of specially trained, extremely relaxed dogs ensures your package arrives... eventually. We specialize in deliveries that take weeks, months, or even years – perfect for those who hate instant gratification!</p>
+                    <p>Founded in 2025, we're revolutionizing the logistics industry by going against the grain. No drones, no next-day shipping – just pure, unadulterated slowness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="tracking">
-    <h2>Track Your Package</h2>
-    <p>Enter your tracking number to see Woofy’s progress:</p>
-    <div class="tracking-form">
-      <input type="text" id="tracking-number" placeholder="Enter tracking number">
-      <button onclick="trackPackage()">Track</button>
-    </div>
-    <div class="tracker">
-      <div class="dog">🐶</div>
-    </div>
-    <p id="tracking-status"></p>
-  </section>
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card mb-4">
+                        <img src="https://via.placeholder.com/400x200?text=Snail+Mail+Service" class="card-img-top" alt="Snail Mail">
+                        <div class="card-body">
+                            <h5 class="card-title">Snail Mail Upgrade</h5>
+                            <p class="card-text">We make traditional snail mail look fast. Deliveries via our canine couriers who stop to sniff every flower along the way.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card mb-4">
+                        <img src="https://via.placeholder.com/400x200?text=Lazy+Express" class="card-img-top" alt="Lazy Express">
+                        <div class="card-body">
+                            <h5 class="card-title">Lazy Express</h5>
+                            <p class="card-text">For when you need it yesterday... but are okay with tomorrow's tomorrow. Guaranteed delivery in 30-90 business days.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card mb-4">
+                        <img src="https://via.placeholder.com/400x200?text=Eternal+Wait" class="card-img-top" alt="Eternal Wait">
+                        <div class="card-body">
+                            <h5 class="card-title">Eternal Wait Premium</h5>
+                            <p class="card-text">Our top-tier service: Packages delivered only when the stars align. Includes complimentary waiting music playlist.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="pricing">
-    <h2>Pricing</h2>
-    <ul>
-      <li>Slow Plan: $5 – standard snail speed</li>
-      <li>Slightly Faster Plan: $10 – Woofy walks a teeny bit faster</li>
-    </ul>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send (Expect Reply in 2-4 Weeks)</button>
+            </form>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form onsubmit="alert('Thanks! We’ll get back… eventually.'); return false;">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; 2025 Woofy Express. All rights reserved. Delivering slowly since... well, we're still working on it.</p>
+    </footer>
 
-  <footer>
-    <p>© 2025 Woofy – We might get there… eventually.</p>
-  </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your message has been sent! Expect a response... eventually.');
+            this.reset();
+        });
+    </script>
 
-  <script src="script.js"></script>
 </body>
 </html>
