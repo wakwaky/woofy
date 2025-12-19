@@ -1,12 +1,111 @@
-body { font-family: 'Comic Neue', sans-serif; margin:0; padding:0; background:#fff8f0; color:#333; }
-header { display:flex; justify-content:space-between; align-items:center; padding:20px; background:#f4a261; color:#fff; }
-header a { color:#fff; text-decoration:none; font-weight:bold; margin:0 10px; }
-.hero { text-align:center; padding:100px 20px; background:#e76f51; color:#fff; }
-.hero button { padding:12px 25px; background:#264653; color:#fff; border:none; border-radius:8px; font-size:16px; cursor:pointer; }
-section { padding:50px 20px; max-width:800px; margin:auto; }
-.tracker { position:relative; height:50px; background:#f4a261; border-radius:25px; overflow:hidden; }
-.tracker .dog { position:absolute; left:0; font-size:32px; }
-form { display:flex; flex-direction:column; }
-form input, form textarea { margin-bottom:10px; padding:10px; font-size:16px; border:1px solid #ccc; border-radius:5px; }
-form button { background:#264653; color:#fff; border:none; padding:10px; border-radius:5px; cursor:pointer; }
-footer { text-align:center; background:#f4a261; color:#fff; padding:20px; }
+body {
+  font-family: 'Comic Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff8f0;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #f4a261;
+}
+
+header .logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #264653;
+}
+
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: #e76f51;
+  color: #fff;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 14px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #264653;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: #2a9d8f;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.tracker {
+  position: relative;
+  height: 60px;
+  background: #f4a261;
+  border-radius: 30px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.tracker .dog {
+  position: absolute;
+  left: 0;
+  font-size: 36px;
+}
+
+.tracking-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.tracking-form input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
+.tracking-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background: #264653;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tracking-form button:hover {
+  background: #2a9d8f;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f4a261;
+  color: #fff;
+}
