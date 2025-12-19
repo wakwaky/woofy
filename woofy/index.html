@@ -4,134 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woofy Express - The Slowest Delivery in the US</title>
-    <!-- Bootstrap CSS for advanced, responsive design -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Custom CSS -->
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: #f8f9fa;
             color: #333;
+            overflow-x: hidden;
+        }
+        h1, h2, h5 {
+            font-family: 'Comic Neue', cursive;
         }
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: #ff6b6b !important;
         }
         .hero {
-            background: url('https://via.placeholder.com/1920x600?text=Woofy+Express+Hero+Image') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://thumbs.dreamstime.com/b/superhero-dogs-capes-dramatic-aerial-perspective-captured-drone-photography-witnessing-canine-courage-experience-363022578.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            padding: 150px 0;
-            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 4.5rem;
         }
         .hero p {
+            font-size: 1.8rem;
+        }
+        .slow-btn {
+            animation: pulse 4s infinite;
             font-size: 1.5rem;
+            padding: 15px 40px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .slow-move {
+            animation: drift 30s linear infinite;
+        }
+        @keyframes drift {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(50px); }
         }
         .feature-card {
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .feature-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
         }
-        .slow-animation {
-            animation: slow-move 10s linear infinite;
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
         }
-        @keyframes slow-move {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(20px); }
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         footer {
-            background-color: #343a40;
-            color: white;
-            padding: 20px 0;
+            background: linear-gradient(to right, #343a40, #212529);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Woofy Express</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Woofy Express 🐶</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero -->
+    <section id="home" class="hero text-center">
         <div class="container">
-            <h1>Welcome to Woofy Express</h1>
-            <p>The Slowest Delivery Service in the US – Because Good Things Come to Those Who Wait... A Lot!</p>
-            <button class="btn btn-light btn-lg mt-3 slow-animation">Get Started (Slowly)</button>
+            <h1 class="slow-move">Woofy Express</h1>
+            <p>The Slowest Delivery Service in the US</p>
+            <p class="lead">Because good things come to those who wait... a really, really long time.</p>
+            <button id="slowStartBtn" class="btn btn-danger btn-lg slow-btn mt-4">Get Started (Very Slowly)</button>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">About Us</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x400?text=Lazy+Dog+Image" alt="Lazy Dog" class="img-fluid rounded">
+            <h2 class="text-center mb-5">About Us</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://media.istockphoto.com/id/951204530/photo/dog-resting-on-the-garden.jpg?s=612x612&w=0&k=20&c=kaKLxOxX1Ts0Sxjkg6w5VIu0s41MSwgVLs6n8KeZ890=" alt="Lazy dog resting" class="img-fluid rounded shadow">
                 </div>
-                <div class="col-md-6">
-                    <p>Woofy Express is proud to be the slowest delivery service in the United States. Our fleet of specially trained, extremely relaxed dogs ensures your package arrives... eventually. We specialize in deliveries that take weeks, months, or even years – perfect for those who hate instant gratification!</p>
-                    <p>Founded in 2025, we're revolutionizing the logistics industry by going against the grain. No drones, no next-day shipping – just pure, unadulterated slowness.</p>
+                <div class="col-lg-6">
+                    <p class="lead">Woofy Express is the proud pioneer of ultra-slow logistics. Our highly trained (and extremely sleepy) dogs deliver your packages at a pace that makes snails jealous.</p>
+                    <p>We believe in mindfulness, relaxation, and taking time to sniff every tree along the route. No rush, no stress – just pure, deliberate slowness.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section id="services" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">Our Services</h2>
-            <div class="row">
+            <h2 class="text-center mb-5">Our Ultra-Slow Services</h2>
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card feature-card mb-4">
-                        <img src="https://via.placeholder.com/400x200?text=Snail+Mail+Service" class="card-img-top" alt="Snail Mail">
+                    <div class="card feature-card h-100">
+                        <img src="https://www.shutterstock.com/image-vector/opposite-antonym-words-slow-fast-600nw-2462895477.jpg" class="card-img-top" alt="Snail vs Dog">
                         <div class="card-body">
-                            <h5 class="card-title">Snail Mail Upgrade</h5>
-                            <p class="card-text">We make traditional snail mail look fast. Deliveries via our canine couriers who stop to sniff every flower along the way.</p>
+                            <h5 class="card-title">Snail Mail Pro</h5>
+                            <p class="card-text">Even slower than traditional mail. Your package might arrive before the next ice age.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card feature-card mb-4">
-                        <img src="https://via.placeholder.com/400x200?text=Lazy+Express" class="card-img-top" alt="Lazy Express">
+                    <div class="card feature-card h-100">
+                        <img src="https://www.usatoday.com/gcdn/authoring/authoring-images/2025/12/12/USAT/87734546007-oakley.jpg?crop=916,687,x495,y241" class="card-img-top" alt="Dog delivering package">
                         <div class="card-body">
                             <h5 class="card-title">Lazy Express</h5>
-                            <p class="card-text">For when you need it yesterday... but are okay with tomorrow's tomorrow. Guaranteed delivery in 30-90 business days.</p>
+                            <p class="card-text">30–90 business days guaranteed. Perfect for gifts you forgot about.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card feature-card mb-4">
-                        <img src="https://via.placeholder.com/400x200?text=Eternal+Wait" class="card-img-top" alt="Eternal Wait">
+                    <div class="card feature-card h-100">
+                        <img src="https://s3.amazonaws.com/lowres.cartoonstock.com/old-age-retirement-turtle-tortoise-leash-lead-walk-dbvn50_low.jpg" class="card-img-top" alt="Dog walking turtle">
                         <div class="card-body">
                             <h5 class="card-title">Eternal Wait Premium</h5>
-                            <p class="card-text">Our top-tier service: Packages delivered only when the stars align. Includes complimentary waiting music playlist.</p>
+                            <p class="card-text">Delivery when the universe feels like it. Includes lifetime waiting support.</p>
                         </div>
                     </div>
                 </div>
@@ -139,43 +170,72 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Contact Us</h2>
-            <form id="contactForm">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" required>
+            <h2 class="text-center mb-5">Contact Us (We'll Reply Eventually)</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="6" placeholder="Your Message (be patient)" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Send Message (Expect Reply in Months)</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send (Expect Reply in 2-4 Weeks)</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center">
-        <p>&copy; 2025 Woofy Express. All rights reserved. Delivering slowly since... well, we're still working on it.</p>
+    <footer class="py-4 text-white text-center">
+        <p>&copy; 2025 Woofy Express. Delivering slowly since... we're still thinking about it.</p>
     </footer>
 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="spinner"></div>
+        <p class="mt-4 fs-3">Processing your request... very slowly 🐢</p>
+    </div>
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Funny slow "loading" on hero button
+        document.getElementById('slowStartBtn').addEventListener('click', function() {
+            document.getElementById('loading').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                alert('Request processed! Your slow journey begins... now-ish.');
+            }, 8000); // 8 seconds of fake loading
+        });
+
+        // Contact form fake submit
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Your message has been sent! Expect a response... eventually.');
-            this.reset();
+            document.getElementById('loading').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                alert('Message sent! We\'ll get back to you... sometime this decade.');
+                this.reset();
+            }, 10000);
         });
     </script>
-
 </body>
 </html>
